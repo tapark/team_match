@@ -20,7 +20,7 @@
             android:layout_height="56dp"
             android:text="Select CLUB"
             android:textColor="@color/white"
-            android:background="#333333"
+            android:background="@color/color_333333"
             android:textSize="18dp"
             android:textStyle="bold"
             android:gravity="center"
@@ -29,8 +29,10 @@
             app:layout_constraintTop_toTopOf="parent"/>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/selectClubRecyclerView"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_margin="12dp"
             app:spanCount="2"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintStart_toStartOf="parent"

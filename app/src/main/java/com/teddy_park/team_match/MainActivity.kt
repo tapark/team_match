@@ -9,7 +9,10 @@ import androidx.activity.viewModels
 import com.google.android.gms.ads.*
 import com.teddy_park.team_match.base.BaseActivity
 import com.teddy_park.team_match.databinding.ActivityMainBinding
+import com.teddy_park.team_match.select_club.SelectClubFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding, MainActivityViewModel>() {
 
     override val viewModel by viewModels<MainActivityViewModel>()
@@ -27,7 +30,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainActivityViewModel>() 
 
             val density = outMetrics.density
 
-            var adWidthPixels = viewDataBinding.adViewContainer.width.toFloat()
+            var adWidthPixels = binding.adViewContainer.width.toFloat()
             if (adWidthPixels == 0f) {
                 adWidthPixels = outMetrics.widthPixels.toFloat()
             }
@@ -84,9 +87,9 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainActivityViewModel>() 
             RequestConfiguration.Builder().setTestDeviceIds(listOf("ABCDEF012345")).build()
         )
         adView = AdView(this)
-        viewDataBinding.adViewContainer.addView(adView)
+        binding.adViewContainer.addView(adView)
 
-        viewDataBinding.adViewContainer.viewTreeObserver.addOnGlobalLayoutListener {
+        binding.adViewContainer.viewTreeObserver.addOnGlobalLayoutListener {
             if (!initialLayoutComplete) {
                 initialLayoutComplete = true
                 loadBottomBanner()
@@ -122,8 +125,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainActivityViewModel>() 
     }
 
     fun showHomeFragment() {
-//        supportFragmentManager.beginTransaction()
-//            .replace(R.id.fragmentContainerView, HomeFragment()).addToBackStack(null).commitAllowingStateLoss()
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragmentContainerView, SelectClubFragment()).addToBackStack(null).commitAllowingStateLoss()
     }
     fun removeFragment() {
         supportFragmentManager.popBackStack()

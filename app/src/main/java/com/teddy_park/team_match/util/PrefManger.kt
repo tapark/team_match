@@ -50,14 +50,14 @@ object PrefManager {
 //        prefs.edit().putString(KEY_USER_INFO, json).apply()
 //    }
 //
-//    fun getSubQuestList(): MutableList<SubQuestInfo> {
-//        val json = prefs.getString(KEY_SUB_QUEST_LIST, null)
-//        return Gson().fromJson(json, object: TypeToken<MutableList<SubQuestInfo>>() {}.type) ?: mutableListOf<SubQuestInfo>()
-//    }
-//    fun setSubQuestList(subQuestList: MutableList<SubQuestInfo>) {
-//        val json = Gson().toJson(subQuestList)
-//        prefs.edit().putString(KEY_SUB_QUEST_LIST, json).apply()
-//    }
+    fun getClubList(): MutableList<ClubItemInfo> {
+        val json = prefs.getString(KEY_SUB_QUEST_LIST, null)
+        return Gson().fromJson(json, object: TypeToken<MutableList<ClubItemInfo>>() {}.type) ?: mutableListOf<ClubItemInfo>()
+    }
+    fun setClubList(clubList: MutableList<ClubItemInfo>) {
+        val json = Gson().toJson(clubList)
+        prefs.edit().putString(KEY_SUB_QUEST_LIST, json).apply()
+    }
 
     fun getBitmap(key: String): Bitmap? {
         val bitmapString = prefs.getString(key, null) ?: return null

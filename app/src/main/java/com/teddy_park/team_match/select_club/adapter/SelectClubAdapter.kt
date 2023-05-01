@@ -1,4 +1,4 @@
-package com.teddy_park.team_match.select_club
+package com.teddy_park.team_match.select_club.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,22 +6,26 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.teddy_park.team_match.databinding.ItemAddClubBinding
 import com.teddy_park.team_match.databinding.ItemSelectClubBinding
+import com.teddy_park.team_match.util.PrefManager
 
-class SelectClubAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class SelectClubAdapter(val onItemAdd: () -> Unit): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private val clubList = mutableListOf<String>()
+    private val clubList = mutableListOf<ClubItemInfo>()
 
     inner class SelectClubViewHolder(val binding: ItemSelectClubBinding, val context: Context): RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: String, position: Int) {
+        fun bind(item: ClubItemInfo, position: Int) {
 
+
+            binding.clubTextView.text = item.name
         }
     }
 
     inner class AddClubViewHolder(val binding: ItemAddClubBinding): RecyclerView.ViewHolder(binding.root) {
-
         fun bind() {
-
+            binding.root.setOnClickListener {
+                onItemAdd()
+            }
         }
     }
 
@@ -55,6 +59,32 @@ class SelectClubAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             CLUB_ITEM
         }
     }
+
+    fun initList(init: MutableList<ClubItemInfo>) {
+        clubList.clear()
+        clubList.addAll(init)
+        notifyDataSetChanged()
+    }
+
+    fun updateList(position: Int) {
+        clubList.clear()
+//        subQuestList.addAll(PrefManager.getSubQuestList())
+        notifyItemChanged(position)
+//        notifyDataSetChanged()
+    }
+
+    fun addItemLast() {
+        clubList.clear()
+        clubList.addAll(PrefManager.getClubList())
+        notifyItemInserted(clubList.size - 1)
+    }
+
+    fun deleteItem(position: Int) {
+        clubList.clear()
+//        subQuestList.addAll(PrefManager.getSubQuestList())
+        notifyItemRemoved(position)
+    }
+
 
 
     companion object {

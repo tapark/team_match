@@ -13,7 +13,7 @@ import com.tapark.military_quest.base.BaseViewModel
 
 abstract class BaseFragment<V : ViewDataBinding, VM : BaseViewModel>: Fragment() {
 
-    lateinit var viewDataBinding: V
+    lateinit var binding: V
     abstract val viewModel: VM
     abstract val layout: Int
 
@@ -35,10 +35,10 @@ abstract class BaseFragment<V : ViewDataBinding, VM : BaseViewModel>: Fragment()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        viewDataBinding = DataBindingUtil.inflate(inflater, layout, container, false)
-        viewDataBinding.lifecycleOwner = this.viewLifecycleOwner
-        viewDataBinding.setVariable(BR.viewModel, viewModel)
-        return viewDataBinding.root
+        binding = DataBindingUtil.inflate(inflater, layout, container, false)
+        binding.lifecycleOwner = this.viewLifecycleOwner
+        binding.setVariable(BR.viewModel, viewModel)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

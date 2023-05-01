@@ -10,16 +10,16 @@ import androidx.lifecycle.ViewModel
 
 abstract class BaseActivity<V : ViewDataBinding, VM : ViewModel>: AppCompatActivity() {
 
-    lateinit var viewDataBinding: V
+    lateinit var binding: V
     abstract val viewModel: VM
     abstract val layout: Int
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewDataBinding = DataBindingUtil.setContentView(this, layout)
-        viewDataBinding.setVariable(BR.viewModel, viewModel)
-        viewDataBinding.lifecycleOwner = this
+        binding = DataBindingUtil.setContentView(this, layout)
+        binding.setVariable(BR.viewModel, viewModel)
+        binding.lifecycleOwner = this
 
         addObserver()
         initView(savedInstanceState)
