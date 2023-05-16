@@ -9,6 +9,7 @@ import android.util.Base64
 import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.teddy_park.team_match.model.ClubInfo
 import java.io.ByteArrayOutputStream
 
 
@@ -50,11 +51,11 @@ object PrefManager {
 //        prefs.edit().putString(KEY_USER_INFO, json).apply()
 //    }
 //
-    fun getClubList(): MutableList<ClubItemInfo> {
+    fun getClubList(): MutableList<ClubInfo> {
         val json = prefs.getString(KEY_SUB_QUEST_LIST, null)
-        return Gson().fromJson(json, object: TypeToken<MutableList<ClubItemInfo>>() {}.type) ?: mutableListOf<ClubItemInfo>()
+        return Gson().fromJson(json, object: TypeToken<MutableList<ClubInfo>>() {}.type) ?: mutableListOf<ClubInfo>()
     }
-    fun setClubList(clubList: MutableList<ClubItemInfo>) {
+    fun setClubList(clubList: MutableList<ClubInfo>) {
         val json = Gson().toJson(clubList)
         prefs.edit().putString(KEY_SUB_QUEST_LIST, json).apply()
     }

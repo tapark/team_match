@@ -1,6 +1,7 @@
 package com.teddy_park.team_match.select_club
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.viewModels
 import com.teddy_park.team_match.R
 import com.teddy_park.team_match.base.BaseFragment
@@ -25,7 +26,10 @@ class SelectClubFragment: BaseFragment<FragmentSelectClubBinding, SelectClubView
     }
 
     override fun addObserver() {
-
+        viewModel.getClubInfoListEvent.observe(viewLifecycleOwner) {
+            Log.d("박태규", "$it")
+            selectClubAdapter.initList(it)
+        }
     }
 
     override fun initView(savedInstanceState: Bundle?) {
@@ -41,14 +45,15 @@ class SelectClubFragment: BaseFragment<FragmentSelectClubBinding, SelectClubView
             }
         )
         binding.selectClubRecyclerView.adapter = selectClubAdapter
-        selectClubAdapter.initList(PrefManager.getClubList())
+        viewModel.getClubInfoList()
     }
 
     private fun initDialog() {
         handleClubDialog = HandleClubDialog(
             mode = MODE_ADD,
             onAddItem = {
-                selectClubAdapter.addItemLast()
+                viewModel.insertClubInfo(it)
+                selectClubAdapter.addItemLast(it)
             }
         )
     }

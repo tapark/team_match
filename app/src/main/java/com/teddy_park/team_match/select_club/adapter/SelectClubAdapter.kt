@@ -6,15 +6,16 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.teddy_park.team_match.databinding.ItemAddClubBinding
 import com.teddy_park.team_match.databinding.ItemSelectClubBinding
+import com.teddy_park.team_match.model.ClubInfo
 import com.teddy_park.team_match.util.PrefManager
 
 class SelectClubAdapter(val onItemAdd: () -> Unit): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private val clubList = mutableListOf<ClubItemInfo>()
+    private val clubList = mutableListOf<ClubInfo>()
 
     inner class SelectClubViewHolder(val binding: ItemSelectClubBinding, val context: Context): RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: ClubItemInfo, position: Int) {
+        fun bind(item: ClubInfo, position: Int) {
 
 
             binding.clubTextView.text = item.name
@@ -60,7 +61,7 @@ class SelectClubAdapter(val onItemAdd: () -> Unit): RecyclerView.Adapter<Recycle
         }
     }
 
-    fun initList(init: MutableList<ClubItemInfo>) {
+    fun initList(init: List<ClubInfo>) {
         clubList.clear()
         clubList.addAll(init)
         notifyDataSetChanged()
@@ -73,9 +74,8 @@ class SelectClubAdapter(val onItemAdd: () -> Unit): RecyclerView.Adapter<Recycle
 //        notifyDataSetChanged()
     }
 
-    fun addItemLast() {
-        clubList.clear()
-        clubList.addAll(PrefManager.getClubList())
+    fun addItemLast(clubInfo: ClubInfo) {
+        clubList.add(clubInfo)
         notifyItemInserted(clubList.size - 1)
     }
 

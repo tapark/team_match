@@ -26,6 +26,6 @@ object DataBaseModule {
 
     @Provides
     @Singleton
-    fun provideMatchDao(matchDatabase: MatchDatabase): MatchDao = matchDatabase.posDao()
+    fun provideMatchDao(matchDatabase: MatchDatabase): MatchDao = matchDatabase.matchDao()
 
 }

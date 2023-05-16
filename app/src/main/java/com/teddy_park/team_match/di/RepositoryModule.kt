@@ -17,6 +17,4 @@ object RepositoryModule {
     fun provideMatchRepository(matchDao: MatchDao) : MatchRepository {
         return MatchRepository(matchDao)
     }
-
-
 }

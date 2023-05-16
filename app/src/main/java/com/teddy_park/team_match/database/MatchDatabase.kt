@@ -7,5 +7,5 @@ import com.teddy_park.team_match.model.ClubInfo
 
 @Database(entities = [ClubInfo::class], version = 1, exportSchema = false)
 abstract class MatchDatabase : RoomDatabase() {
-    abstract fun posDao(): MatchDao
+    abstract fun matchDao(): MatchDao
 }

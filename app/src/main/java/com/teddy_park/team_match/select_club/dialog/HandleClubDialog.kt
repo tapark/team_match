@@ -5,13 +5,14 @@ import androidx.fragment.app.viewModels
 import com.teddy_park.team_match.R
 import com.teddy_park.team_match.base.BaseDialogFragment
 import com.teddy_park.team_match.databinding.DialogHandleClubBinding
+import com.teddy_park.team_match.model.ClubInfo
 import com.teddy_park.team_match.util.PrefManager
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class HandleClubDialog(
     val mode: Int,
-    val onAddItem: () -> Unit
+    val onAddItem: (ClubInfo) -> Unit
 ): BaseDialogFragment<DialogHandleClubBinding, HandleClubDialogViewModel>() {
 
     override val viewModel: HandleClubDialogViewModel by viewModels()
@@ -33,14 +34,11 @@ class HandleClubDialog(
             dismiss()
         }
         binding.confirmButton.setOnClickListener {
-            val clubList = PrefManager.getClubList()
-            val clubItem = ClubItemInfo(
+            val clubInfo = ClubInfo(
                 name = binding.clubEditText.text.toString()
             )
-            clubList.add(clubItem)
-            PrefManager.setClubList(clubList)
             dismiss()
-            onAddItem()
+            onAddItem(clubInfo)
         }
 
     }

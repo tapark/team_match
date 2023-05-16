@@ -4,10 +4,19 @@ import android.graphics.Bitmap
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
-@Entity
+@Serializable
+@Entity(tableName = "clubInfo")
 data class ClubInfo(
-    @PrimaryKey val id: Int = 0,
-    @ColumnInfo val image: Bitmap? = null,
-    @ColumnInfo val name: String = ""
+    @PrimaryKey(autoGenerate = true)
+    @SerialName("id")
+    val id: Int = 0,
+
+//    @SerialName("image")
+//    val image: Bitmap? = null,
+
+    @SerialName("name")
+    val name: String = ""
 )
