@@ -9,7 +9,10 @@ import com.teddy_park.team_match.databinding.ItemSelectClubBinding
 import com.teddy_park.team_match.model.ClubInfo
 import com.teddy_park.team_match.util.PrefManager
 
-class SelectClubAdapter(val onItemAdd: () -> Unit): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class SelectClubAdapter(
+    val onItemAdd: () -> Unit,
+    val onItemClick: () -> Unit
+): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val clubList = mutableListOf<ClubInfo>()
 
@@ -19,6 +22,9 @@ class SelectClubAdapter(val onItemAdd: () -> Unit): RecyclerView.Adapter<Recycle
 
 
             binding.clubTextView.text = item.name
+            binding.root.setOnClickListener {
+                onItemClick()
+            }
         }
     }
 
