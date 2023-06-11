@@ -1,14 +1,15 @@
-package com.teddy_park.team_match.select_club
+package com.teddy_park.team_match.ui.select_club
 
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.viewModels
+import com.teddy_park.team_match.MainActivity
 import com.teddy_park.team_match.R
 import com.teddy_park.team_match.base.BaseFragment
 import com.teddy_park.team_match.databinding.FragmentSelectClubBinding
-import com.teddy_park.team_match.select_club.adapter.SelectClubAdapter
-import com.teddy_park.team_match.select_club.dialog.HandleClubDialog
-import com.teddy_park.team_match.select_club.dialog.HandleClubDialog.Companion.MODE_ADD
+import com.teddy_park.team_match.ui.select_club.adapter.SelectClubAdapter
+import com.teddy_park.team_match.ui.select_club.dialog.HandleClubDialog
+import com.teddy_park.team_match.ui.select_club.dialog.HandleClubDialog.Companion.MODE_ADD
 import com.teddy_park.team_match.util.PrefManager
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -44,7 +45,7 @@ class SelectClubFragment: BaseFragment<FragmentSelectClubBinding, SelectClubView
                 handleClubDialog.show(parentFragmentManager, null)
             },
             onItemClick = {
-
+                (activity as MainActivity).showMyClubFragment()
             }
         )
         binding.selectClubRecyclerView.adapter = selectClubAdapter

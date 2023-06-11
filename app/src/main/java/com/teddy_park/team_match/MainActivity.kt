@@ -9,7 +9,8 @@ import androidx.activity.viewModels
 import com.google.android.gms.ads.*
 import com.teddy_park.team_match.base.BaseActivity
 import com.teddy_park.team_match.databinding.ActivityMainBinding
-import com.teddy_park.team_match.select_club.SelectClubFragment
+import com.teddy_park.team_match.ui.my_club.MyClubFragment
+import com.teddy_park.team_match.ui.select_club.SelectClubFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -126,8 +127,16 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainActivityViewModel>() 
 
     fun showHomeFragment() {
         supportFragmentManager.beginTransaction()
-            .replace(R.id.fragmentContainerView, SelectClubFragment()).addToBackStack(null).commitAllowingStateLoss()
+            .replace(R.id.fragmentContainerView, SelectClubFragment())
+            .addToBackStack(null).commitAllowingStateLoss()
     }
+
+    fun showMyClubFragment() {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragmentContainerView, MyClubFragment())
+            .addToBackStack(null).commitAllowingStateLoss()
+    }
+
     fun removeFragment() {
         supportFragmentManager.popBackStack()
     }

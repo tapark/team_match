@@ -1,4 +1,4 @@
-package com.teddy_park.team_match.select_club
+package com.teddy_park.team_match.ui.select_club
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

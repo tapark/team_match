@@ -1,4 +1,4 @@
-package com.teddy_park.team_match.select_club.dialog
+package com.teddy_park.team_match.ui.select_club.dialog
 
 import android.os.Bundle
 import androidx.fragment.app.viewModels

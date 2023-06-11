@@ -1,4 +1,4 @@
-package com.teddy_park.team_match.select_club.adapter
+package com.teddy_park.team_match.ui.select_club.adapter
 
 import android.content.Context
 import android.view.LayoutInflater

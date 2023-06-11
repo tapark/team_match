@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.teddy_park.team_match.select_club.SelectClubViewModel" />
+            type="com.teddy_park.team_match.ui.select_club.SelectClubViewModel" />
 
     </data>
 
