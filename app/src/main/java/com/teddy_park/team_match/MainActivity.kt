@@ -6,9 +6,11 @@ import android.util.Log
 import android.view.Gravity
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.fragment.app.Fragment
 import com.google.android.gms.ads.*
 import com.teddy_park.team_match.base.BaseActivity
 import com.teddy_park.team_match.databinding.ActivityMainBinding
+import com.teddy_park.team_match.model.ClubInfo
 import com.teddy_park.team_match.ui.my_club.MyClubFragment
 import com.teddy_park.team_match.ui.select_club.SelectClubFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -131,13 +133,14 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainActivityViewModel>() 
             .addToBackStack(null).commitAllowingStateLoss()
     }
 
-    fun showMyClubFragment() {
+    fun showMyClubFragment(clubInfo: ClubInfo) {
         supportFragmentManager.beginTransaction()
-            .replace(R.id.fragmentContainerView, MyClubFragment())
+            .replace(R.id.fragmentContainerView, MyClubFragment(clubInfo))
             .addToBackStack(null).commitAllowingStateLoss()
     }
 
     fun removeFragment() {
+//        supportFragmentManager.beginTransaction().remove(fragment).commit()
         supportFragmentManager.popBackStack()
     }
 

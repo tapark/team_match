@@ -15,6 +15,7 @@
         <item name="android:windowBackground">@color/app_background</item>
         <!-- Customize your theme here. -->
 
+
         <!-- 상단 Title 배경색 -->
         <item name="colorAccent">@color/app_background</item>
         <!-- 선택한 날짜 배경 색 -->

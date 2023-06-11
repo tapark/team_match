@@ -45,7 +45,7 @@ class SelectClubFragment: BaseFragment<FragmentSelectClubBinding, SelectClubView
                 handleClubDialog.show(parentFragmentManager, null)
             },
             onItemClick = {
-                (activity as MainActivity).showMyClubFragment()
+                (activity as MainActivity).showMyClubFragment(it)
             }
         )
         binding.selectClubRecyclerView.adapter = selectClubAdapter

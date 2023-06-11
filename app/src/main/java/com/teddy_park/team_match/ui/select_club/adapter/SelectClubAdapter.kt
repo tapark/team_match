@@ -11,7 +11,7 @@ import com.teddy_park.team_match.util.PrefManager
 
 class SelectClubAdapter(
     val onItemAdd: () -> Unit,
-    val onItemClick: () -> Unit
+    val onItemClick: (ClubInfo) -> Unit
 ): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val clubList = mutableListOf<ClubInfo>()
@@ -20,10 +20,9 @@ class SelectClubAdapter(
 
         fun bind(item: ClubInfo, position: Int) {
 
-
             binding.clubTextView.text = item.name
             binding.root.setOnClickListener {
-                onItemClick()
+                onItemClick(item)
             }
         }
     }
